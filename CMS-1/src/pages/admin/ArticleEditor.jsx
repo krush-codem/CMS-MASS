@@ -107,14 +107,14 @@ export default function ArticleEditor() {
 
   return (
     <div className="max-w-5xl mx-auto">
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <h1 className="text-3xl font-display font-black text-black-forest">
           {id ? 'Edit Article' : 'Composer Workspace'}
         </h1>
         <button 
           onClick={handleSave} 
           disabled={saving}
-          className="bg-black-forest text-white px-8 py-3 rounded-xl font-bold hover:bg-black-forest/90 hover:shadow-md transition-all duration-300 disabled:opacity-50"
+          className="w-full sm:w-auto bg-black-forest text-white px-8 py-3 rounded-xl font-bold hover:bg-black-forest/90 hover:shadow-md transition-all duration-300 disabled:opacity-50"
         >
           {saving ? 'Processing...' : 'Save Content Layout'}
         </button>

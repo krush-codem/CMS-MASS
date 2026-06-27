@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Resources from './pages/Resources';
 import Categories from './pages/Categories';
+import CategoryArticles from './pages/CategoryArticles';
 import Article from './pages/Article';
 import Articles from './pages/Articles';
 import NotFound from './pages/NotFound';
@@ -20,6 +21,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/resources" element={<Resources />} />
         <Route path="/categories" element={<Categories />} />
+        <Route path="/categories/:categoryName" element={<CategoryArticles />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/article/:slug" element={<Article />} />
         <Route path="/admin" element={<ProtectedAdminLayout />}>

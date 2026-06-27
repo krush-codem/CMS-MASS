@@ -81,7 +81,7 @@ export default function Article() {
         {/* Header Section */}
         <header className="mb-[64px] text-center">
           {article.categories?.name && (
-            <Link to={`/categories?tag=${article.categories.name}`} className="text-micro text-sunlit-clay uppercase tracking-[1.5px] mb-[24px] inline-block hover:text-copperwood transition-colors">
+            <Link to={`/categories/${article.categories.name}`} className="text-micro text-sunlit-clay uppercase tracking-[1.5px] mb-[24px] inline-block hover:text-copperwood transition-colors">
               {article.categories.name}
             </Link>
           )}
@@ -163,7 +163,7 @@ export default function Article() {
           <div className="flex flex-wrap gap-[8px] mb-[64px] pt-[32px] border-t border-border-dark">
             <span className="text-body-sm-bold text-black-forest mr-[8px] self-center">Filed under:</span>
             {article.tags.map(tag => (
-              <Link to={`/categories?tag=${tag}`} key={tag} className="badge-code hover:bg-copperwood hover:text-white transition-colors cursor-pointer text-decoration-none">
+              <Link to={`/categories/${tag}`} key={tag} className="badge-code hover:bg-copperwood hover:text-white transition-colors cursor-pointer text-decoration-none">
                 {tag}
               </Link>
             ))}
