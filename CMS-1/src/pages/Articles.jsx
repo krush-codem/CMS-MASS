@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/layout/Navbar";
 import { supabase } from "../config/supabaseClient";
 import { Link } from "react-router-dom";
+import ArticleCard from "../components/public/ArticleCard";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
@@ -143,43 +144,7 @@ export default function Articles() {
         ) : filteredArticles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[32px]">
             {filteredArticles.map((article) => (
-              <Link
-                to={`/article/${article.slug}`}
-                key={article.id}
-                className="card-elevated group flex flex-col h-full"
-              >
-                {article.main_image_url && (
-                  <div className="h-[200px] -mx-[32px] -mt-[32px] mb-[24px] overflow-hidden rounded-t-[8px]">
-                    <img
-                      src={article.main_image_url}
-                      alt={article.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                )}
-                <div className="flex-1 flex flex-col">
-                  {article.categories?.name && (
-                    <span className="text-micro text-sunlit-clay uppercase tracking-[1px] mb-[12px] block">
-                      {article.categories.name}
-                    </span>
-                  )}
-                  <h3 className="text-card-title text-black-forest mb-[12px] group-hover:text-copperwood transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="text-body-sm text-black-forest line-clamp-3 mb-[24px] flex-1">
-                    {article.excerpt}
-                  </p>
-                  <div className="flex items-center justify-between text-caption-bold text-black-forest pt-[16px] border-t border-border-light mt-auto">
-                    <span>
-                      {new Date(article.created_at).toLocaleDateString(
-                        "en-US",
-                        { month: "short", day: "numeric", year: "numeric" },
-                      )}
-                    </span>
-                    <span>Read Article &rarr;</span>
-                  </div>
-                </div>
-              </Link>
+              <ArticleCard key={article.id} article={article} />
             ))}
           </div>
         ) : (

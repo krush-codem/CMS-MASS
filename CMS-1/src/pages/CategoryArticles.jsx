@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { supabase } from '../config/supabaseClient';
 import { Link, useParams } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
+import ArticleCard from '../components/public/ArticleCard';
 
 export default function CategoryArticles() {
   const { categoryName } = useParams();
@@ -67,48 +68,7 @@ export default function CategoryArticles() {
           ) : articles.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
               {articles.map((article) => (
-                <Link
-                  to={`/article/${article.slug}`}
-                  key={article.id}
-                  className="card-base group flex items-start gap-[24px] h-auto p-[24px]"
-                >
-                  {article.main_image_url ? (
-                    <div className="w-[120px] h-[120px] rounded-[6px] overflow-hidden shrink-0">
-                      <img
-                        src={article.main_image_url}
-                        alt=""
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-[120px] h-[120px] rounded-[6px] bg-surface-elevated border border-border-dark flex items-center justify-center shrink-0">
-                      <svg
-                        width="32"
-                        height="32"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="var(--color-olive-leaf)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                        <polyline points="10 9 9 9 8 9"></polyline>
-                      </svg>
-                    </div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-body-md-bold text-black-forest mb-[8px] group-hover:text-copperwood transition-colors line-clamp-2">
-                      {article.title}
-                    </h3>
-                    <p className="text-body-sm text-olive-leaf line-clamp-2">
-                      {article.excerpt}
-                    </p>
-                  </div>
-                </Link>
+                <ArticleCard key={article.id} article={article} />
               ))}
             </div>
           ) : (
